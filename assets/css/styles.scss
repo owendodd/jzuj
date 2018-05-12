@@ -11,6 +11,7 @@ body {
   font-size: 3.8vw;
   line-height: 3.8rem;
   color: #3F490B;
+  background-color: #251F00;
 }
 
 p {
@@ -36,7 +37,7 @@ a {
 
 .text {
   text-align: left;
-  font-size: 1.6rem;
+  font-size: 2.2vw;
   line-height: 1.4em;
   max-width: 800px;
   margin: -3.8rem auto 0;
@@ -61,21 +62,31 @@ a {
     }
   }
   img {
-    position: absolute;
+    // position: absolute;
     max-width: 600px;
     z-index: 200;
-    top: 0;
-    left: 0;
+    // top: 0;
+    // left: 0;
   }
-  &:hover img {
-    display: none;
-  }
+  // &:hover img {
+  //   display: none;
+  // }
   
 }
 
-.content {
-  height: 100%;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
+input[type=button] {
+  text-align: center;
+  color: #3F490B;
+  background-color: none;
+  font-family: 'Akzidenz', sans-serif;
+  letter-spacing: 1px;
+  font-size: 2.2vw;
+  padding: 22px 40px 20px;
+  border: 3px solid #3F490B;
+  border-radius: 50px;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    background-color: #3F490B;
+  }
 }
