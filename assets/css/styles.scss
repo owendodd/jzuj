@@ -89,7 +89,12 @@ footer {
 
 
 
-
+form {
+  position: relative;
+  img {
+    position: absolute;
+  }
+}
 input[type=submit] {
   text-align: center;
   color: #E21414;
@@ -105,7 +110,7 @@ input[type=submit] {
     color: #3D332B;
     background-color: #E21414;
   }
-  img {}
+  
 }
 
 
