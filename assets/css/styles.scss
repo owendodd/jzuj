@@ -4,6 +4,7 @@
 }
 
 
+
 body {
   padding: 30px;
   text-align: center;
@@ -42,7 +43,8 @@ a {
   height: 100vh;
   z-index: -100;
   img {
-    height: 85vh;
+    max-height: 85vh;
+    max-width: 90vw;
   }
 }
 
@@ -71,9 +73,9 @@ footer {
     font-family: 'AkzidenzMed', sans-serif;
     letter-spacing: 0;
     text-align: left;
-    font-size: 2.2vw;
+    font-size: 2.8vw;
     line-height: 1.2em;
-    max-width: 800px;
+    max-width: 750px;
   }
   .contact {
     margin: 40px 0 20px;
@@ -103,4 +105,36 @@ input[type=submit] {
     color: #3D332B;
     background-color: #E21414;
   }
+  img {}
+}
+
+
+@media screen and (max-width: 800px) {
+  body {
+    padding: 15px;
+    font-size: 6vh;
+  }
+
+
+  .intro {
+    margin: 0 0 140px;
+    .header {
+      margin: 0 0 80px;
+    }
+    p {
+      margin: 0 0 60px;
+    }
+    p.buy {
+      margin: 0 0 20px;
+    }
+  }
+
+  footer .text {
+    font-size: 4vh;
+  }
+
+  input[type=submit] {
+    font-size: 6vh;
+  }
+
 }
