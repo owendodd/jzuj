@@ -1,16 +1,18 @@
 @font-face {font-family: 'Akzidenz';src: url('/assets/webfonts/BertholdAkzidenzGrotesk-Bold.woff') format('woff');
 }
+@font-face {font-family: 'AkzidenzExtended';src: url('/assets/webfonts/BertholdAkzidenzGrotesk-MediumExtended.woff') format('woff');
+}
 @font-face {font-family: 'JzujSans';src: url('/assets/webfonts/JzujSans8-Regular.woff') format('woff');
 }
 
 body {
   padding: 30px;
   text-align: center;
-  font-family: 'Akzidenz', sans-serif;
+  font-family: 'AkzidenzExtended', sans-serif;
   letter-spacing: 1px;
   font-size: 3.8vw;
-  line-height: 3.8rem;
-  color: #3F490B;
+  line-height: 1.1em;
+  color: #2647B2;
   background-color: #251F00;
 }
 
@@ -19,17 +21,31 @@ p {
 }
 
 a {
-  color: #3F490B;
+  color: #2647B2;
   text-decoration: underline;
   &:hover {
     color: black;
   }
 }
 
+.header {
+  width: calc(1005 - 60px);
+  padding: 40px;
+  border: 10px solid #2647B2;
+  margin: 0 0 80px;
+  img {
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
 .headline {
   font-family: 'JzujSans', serif;
   font-size: 12vw;
-  color: #3F490B;
+  color: #2647B2;
   margin: 3.8rem 0;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
@@ -38,7 +54,7 @@ a {
 .text {
   text-align: left;
   font-size: 2.2vw;
-  line-height: 1.4em;
+  line-height: 1.1em;
   max-width: 800px;
   margin: -3.8rem auto 0;
 }
@@ -74,19 +90,19 @@ a {
   
 }
 
-input[type=button] {
+input[type=submit] {
   text-align: center;
-  color: #3F490B;
+  color: #2647B2;
   background-color: none;
   font-family: 'Akzidenz', sans-serif;
   letter-spacing: 1px;
   font-size: 2.2vw;
   padding: 22px 40px 20px;
-  border: 3px solid #3F490B;
+  border: 3px solid #2647B2;
   border-radius: 50px;
   cursor: pointer;
   &:hover {
     color: white;
-    background-color: #3F490B;
+    background-color: #2647B2;
   }
 }
