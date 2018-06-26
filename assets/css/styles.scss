@@ -84,9 +84,23 @@ nav {
   text-align: center;
 }
 
+.banner {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 100px;
+  p {
+    text-align: center;
+    font-size: 22px;
+    width: 100%;
+    margin: 15px;
+  }
+}
+
 section {
   max-width: 800px;
   margin: 0 auto 80px;
+  padding: 0 20px;
   &:first-of-type {
     margin-top: 73px;
   }
@@ -123,4 +137,41 @@ footer {
 
 .content-header {
   margin: 20px auto;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  body {
+    font-size: 24px;
+  }
+
+  .text-headline {
+    font-size: 40px;
+  }
+
+  .text-description {
+    font-size: 18px;
+  }
+
+  .banner {
+    p {
+      font-size: 18px;
+      line-height: 1.1;
+    }
+  }
+
+  .content-block {
+    .block-container {
+      padding: 5px;
+    }
+  }
+
+  section {
+    margin: 0 auto 40px;
+    &:first-of-type {
+      margin-top: 100px;
+    }
+  }
+  
 }
