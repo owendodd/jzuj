@@ -1,17 +1,7 @@
-@font-face {
-font-family: "Work Sans";
-src: 
-url("/assets/fonts/ttf/WorkSans-Regular.ttf") format("truetype"),
-url("/assets/fonts/woff/WorkSans-Regular.woff") format("woff"),
-url("/assets/fonts/woff2/WorkSans-Regular.woff2") format("woff2");
-font-weight: normal;
-}
-
-@font-face {
-  font-family: "Work Sans";
-  src: 
-  url("/assets/fonts/ttf/WorkSans-black.ttf") format("truetype"),
-  url("/assets/fonts/woff/WorkSans-black.woff")format("woff"),
-  url("/assets/fonts/woff2/WorkSans-black.woff2") format("woff2");
-  font-weight: bold;
-  }
+  @font-face {
+    font-family: "Spot Mono";
+    src: 
+    url("/assets/fonts/spotmono/Spot\ Mono\ Regular.eot") format('embedded-opentype'),
+    url("/assets/fonts/spotmono/Spot\ Mono\ Regular.woff")format("woff");
+    font-weight: normal;
+    }
