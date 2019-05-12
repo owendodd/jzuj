@@ -17,13 +17,15 @@
     <![endif]-->
     <div id="form">
       <form @submit.prevent="submit">
-        <select v-model="date">
-          <option v-for="date in dates" :value="date.time">{{date.label}}</option>
+        <select v-model="selectedItem">
+          <option v-if="loading" selected disabled :value="false">Loading Dates</option>
+          <option v-else selected disabled :value="false">Select Date</option>
+          <option v-for="item in items" :value="item">{{item.name}}</option>
         </select>
         <select v-model="quantity">
           <option v-for="quantity in quantities" :value="quantity">{{quantity}}</option>
         </select>
-        <button :disabled="!quantity || !date">Reserve</button>
+        <button :disabled="!quantity || !selectedItem">Reserve</button>
       </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -31,23 +33,35 @@
       var form = new Vue({
         el: "#form",
         data: {
-          dates: [
-            { label: 'Tomorrow', time: '1/2/19' },
-            { label: 'Today', time: '1/1/19' },
-            { label: 'Two days from now', time: '1/4/19' },
-          ],
+          apiUrl: 'https://mff5xh1kl3.execute-api.us-east-1.amazonaws.com/dev/',
+          devUrl: 'http://localhost:3000/',
+          loading: true,
+          items: [],
           quantities: [0, 1, 2, 3, 4, 5],
-          date: '',
+          selectedItem: false,
           quantity: 0
         },
         mounted: function () {
+          this.getInventory()
           this.quantities = [0, 1, 2, 3, 4, 5]
         },
         methods: {
           submit: function (e) {
-            debugger
             e.stopPropagation()
-            console.log(this.date, this.quantity)
+            console.log(this.selectedItem, this.quantity)
+          },
+          getInventory: function () {
+            fetch(this.apiUrl + 'items')
+              .then(function(response) { return response.json()})
+              .then(this.populateItems, this.handleFail)
+          },
+          populateItems: function (data) {
+            this.items = data.body[0].variations
+            this.loading = false
+          },
+          handleFail: function (err) {
+            alert('Something went wrong, please contact us.')
+            console.error(err)
           }
         }
       })
