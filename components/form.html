@@ -73,7 +73,6 @@
             })
           },
           checkout: function () {
-            debugger
             const item = Object.assign({}, this.selectedItem, {quantity: this.quantity.toString()})
             const order = {
               items: [item],
