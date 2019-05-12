@@ -30,11 +30,18 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+      var isDev = function () {
+        var baseUrl = location.href.split("/")[2]
+        return ['localhost', '127.0'].some(function (url) {
+          debugger
+          return baseUrl.includes(url)
+        })
+      }
       var form = new Vue({
         el: "#form",
         data: {
-          apiUrl: 'https://mff5xh1kl3.execute-api.us-east-1.amazonaws.com/dev/',
-          devUrl: 'http://localhost:3000/',
+          apiUrl: isDev() ? 'http://localhost:3000/' : 'https://mff5xh1kl3.execute-api.us-east-1.amazonaws.com/dev/',
+          redirectUrl: 'http://localhost:5500',
           loading: true,
           items: [],
           stock: [],
@@ -44,7 +51,6 @@
         mounted: function () {
           this.getItems()
           this.getStock()
-          this.quantities = [0, 1, 2, 3, 4, 5]
         },
         computed: {
           quantityAvailable: function() {
@@ -62,7 +68,24 @@
         methods: {
           submit: function (e) {
             e.stopPropagation()
-            console.log(this.selectedItem, this.quantity)
+            this.checkout().then(function(data) {
+              const redirect = data.body.checkout.checkout_page_url
+              location.href = redirect
+            })
+          },
+          checkout: function () {
+            debugger
+            const item = Object.assign({}, this.selectedItem, {quantity: this.quantity.toString()})
+            const order = {
+              items: [item],
+              redirect_url: this.redirectUrl,
+              request_id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+            }
+            return fetch(this.apiUrl + 'checkout', {
+              method: 'POST',
+              mode: 'cors',
+              body: JSON.stringify(order)
+            }).then(function(response) { return response.json() })
           },
           getItems: function () {
             fetch(this.apiUrl + 'items')
