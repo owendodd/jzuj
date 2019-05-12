@@ -33,7 +33,6 @@
       var isDev = function () {
         var baseUrl = location.href.split("/")[2]
         return ['localhost', '127.0'].some(function (url) {
-          debugger
           return baseUrl.includes(url)
         })
       }
@@ -41,7 +40,7 @@
         el: "#form",
         data: {
           apiUrl: isDev() ? 'http://localhost:3000/' : 'https://mff5xh1kl3.execute-api.us-east-1.amazonaws.com/dev/',
-          redirectUrl: 'http://localhost:5500',
+          redirectUrl: isDev() ? 'http://localhost:5500/' : 'jzujfood.com',
           loading: true,
           items: [],
           stock: [],
