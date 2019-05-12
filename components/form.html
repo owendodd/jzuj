@@ -23,7 +23,7 @@
           <option v-for="item in items" :value="item">{{item.name}}</option>
         </select>
         <select v-model="quantity">
-          <option v-for="quantity in quantities" :value="quantity">{{quantity}}</option>
+          <option v-for="(quantity, idx) in quantityAvailable" :value="idx">{{idx}}</option>
         </select>
         <button :disabled="!quantity || !selectedItem">Reserve</button>
       </form>
@@ -37,27 +37,49 @@
           devUrl: 'http://localhost:3000/',
           loading: true,
           items: [],
-          quantities: [0, 1, 2, 3, 4, 5],
+          stock: [],
           selectedItem: false,
           quantity: 0
         },
         mounted: function () {
-          this.getInventory()
+          this.getItems()
+          this.getStock()
           this.quantities = [0, 1, 2, 3, 4, 5]
+        },
+        computed: {
+          quantityAvailable: function() {
+            const quantityArray = []
+            quantityArray[0] = 0
+            if (!this.selectedItem) return quantityArray
+            const self = this
+            const itemVariation = this.stock.find(function(item) {
+              return item.variation_id === self.selectedItem.id
+            })
+            quantityArray[+itemVariation.quantity_on_hand] = +itemVariation.quantity_on_hand
+            return quantityArray
+          }
         },
         methods: {
           submit: function (e) {
             e.stopPropagation()
             console.log(this.selectedItem, this.quantity)
           },
-          getInventory: function () {
+          getItems: function () {
             fetch(this.apiUrl + 'items')
               .then(function(response) { return response.json()})
               .then(this.populateItems, this.handleFail)
           },
+          getStock: function () {
+            fetch(this.apiUrl + 'inventory')
+              .then(function(response) { return response.json()})
+              .then(this.populateStock, this.handleFail)
+          },
           populateItems: function (data) {
             this.items = data.body[0].variations
             this.loading = false
+          },
+          populateStock: function (data) {
+            this.stock = data.body
           },
           handleFail: function (err) {
             alert('Something went wrong, please contact us.')
