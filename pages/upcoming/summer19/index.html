@@ -50,15 +50,29 @@
 
   <section>
     <h1 class="center">Summer 19 at 814</h1>
-    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget</p>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem
+      lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget</p>
 
     <p>The four-course dinner $50 per person
-        Wine pairings available at the event for $40, </p>
+      Wine pairings available at the event for $40, </p>
     </p>
   </section>
 
   <section>
     <h1>TK TICKETING</h1>
+    <div id="form">
+      <form @submit.prevent="submit">
+        <select class="select" v-model="selectedItem">
+          <option v-if="loading" selected disabled :value="false">Loading Dates</option>
+          <option v-else selected disabled :value="false">Select Date</option>
+          <option v-for="item in items" :value="item">{{item.name}}</option>
+        </select>
+        <select class="select" v-model="quantity">
+          <option v-for="(quantity, idx) in quantityAvailable" :value="idx">{{idx}}</option>
+        </select>
+        <button class="select" :disabled="!quantity || !selectedItem">Reserve</button>
+      </form>
+    </div>
   </section>
 
 
@@ -70,9 +84,13 @@
       <a href="">Email newsletter</a>
     </div>
     <div>© 2019</div>
-    
+
   </footer>
 
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="/assets/js/square.js"></script>
 </body>
 
 </html>
