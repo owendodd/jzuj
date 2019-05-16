@@ -13,7 +13,7 @@ var isDev = function () {
           items: [],
           stock: [],
           selectedItem: false,
-          quantity: 0
+          quantity: false
         },
         mounted: function () {
           this.getItems()

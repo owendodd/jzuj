@@ -23,6 +23,7 @@
           <option v-for="item in items" :value="item">{{item.name}}</option>
         </select>
         <select v-model="quantity">
+          <option disabled :value="false">Select Quantity</option>
           <option v-for="(quantity, idx) in quantityAvailable" :value="idx">{{idx}}</option>
         </select>
         <button :disabled="!quantity || !selectedItem">Reserve</button>
