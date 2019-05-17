@@ -74,12 +74,11 @@ var isDev = function () {
           fetch: function (url, options) {
             const fetchOptions = Object.assign(
               {
-                url: url,
                 mode: 'cors'
               },
               options
             )
-            return fetch(fetchOptions)
+            return fetch(url, fetchOptions)
           },
           populateItems: function (data) {
             this.items = data.body[0].variations
