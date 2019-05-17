@@ -65,12 +65,12 @@
     <div id="form">
       <form @submit.prevent="submit">
         <div class="select-wrapper">
-          <select class="select" v-model="selectedItem">
+          <select style="background: url('assets/imgs/arrow.svg') 97% / 20%  20px no-repeat white;" class="select" v-model="selectedItem">
             <option v-if="loading" selected disabled :value="false">Loading Dates</option>
             <option v-else selected disabled :value="false">Select Date</option>
             <option v-for="item in variations" :value="item">{{item.name}}</option>
           </select>
-          <select class="select" v-model="quantity">
+          <select style="background: url('assets/imgs/arrow.svg') 97% / 20%  20px no-repeat white;" class="select" v-model="quantity">
             <option v-if="selectedItem" selected disabled :value="false">Select Quantity</option>
             <option v-else selected disabled :value="false">Quantity</option>
             <option v-for="(quantity, idx) in quantityAvailable" :value="idx + 1">{{idx + 1}} Seats</option>
