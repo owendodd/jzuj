@@ -10,7 +10,8 @@ var isDev = function () {
           apiUrl: isDev() ? 'http://localhost:3000/' : 'https://mff5xh1kl3.execute-api.us-east-1.amazonaws.com/dev/',
           redirectUrl: isDev() ? 'http://localhost:5500/' : 'https://jzujfood.com',
           loading: true,
-          items: [],
+          mainItem: null,
+          variations: [],
           stock: [],
           selectedItem: false,
           quantity: false
@@ -28,8 +29,10 @@ var isDev = function () {
             const itemVariation = this.stock.find(function(item) {
               return item.variation_id === self.selectedItem.id
             })
-            const limit = +itemVariation.quantity_on_hand - 1
-            quantityArray[limit] = +itemVariation.quantity_on_hand
+            const { quantity_on_hand } = itemVariation
+            if (+quantity_on_hand < 1) return []
+            const limit = +quantity_on_hand - 1
+            quantityArray[limit] = +quantity_on_hand
             return quantityArray
           },
           price: function() {
@@ -63,12 +66,12 @@ var isDev = function () {
             })
           },
           buildItem: function () {
-            const { name, category_id } = this.mainItem
+            const { name, id } = this.mainItem
             const item = {
               name,
+              id,
               variation_name: this.selectedItem.name,
-              catalog_object_id: this.selectedItem.id,
-              quantity: this.quantity.toString()
+              quantity: this.quantity.toString(),
             }
             return item
           },
@@ -91,7 +94,7 @@ var isDev = function () {
           },
           populateItems: function (data) {
             this.mainItem = data.body[0]
-            this.variations = mainItem.variations
+            this.variations = this.mainItem.variations
             this.loading = false
           },
           populateStock: function (data) {
