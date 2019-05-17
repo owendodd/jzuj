@@ -41,23 +41,51 @@
     </div>
 
     <nav>
-      <a href="/pages/upcoming/summer19/" id="upcoming-events">Upcoming events</a>
-      <a href="/pages/past/" id="past-events">Past events</a>
-      <a href="/pages/info/" id="information">Information</a>
-      <a href="/pages/newsletter/" id="newsletter">Newsletter</a>
+      <a href="" id="upcoming-events">Upcoming events</a>
+      <a href="" id="past-events">Past events</a>
+      <a href="" id="information">Information</a>
+      <a href="" id="newsletter">Newsletter</a>
     </nav>
   </header>
 
   <section>
-    <a href="/pages/upcoming/summer19/" class="no-hover">
-    <img class="summer19" src="/assets/imgs/summer19.svg" alt="Summer 19" />
-  </a>
+    <h1 class="center">Summer 19</h1>
+    <p>Join us every other weekend throughout the summer for a special event series in our outdoor dinning space. The
+      four course meal with be entirely vegetarian with a focus on locally sourced produce.</p>
+    <p>Tickets are available for $45 per person. A wine pairing provided at the event for $40 along with a select bottle
+      list.</p>
+    <p></p>
+    </p>
   </section>
 
-  <section class="banner">
-    <p>Next dinner: June 3rd, 7:30pm.</p>
-    <a href="/pages/upcoming/summer19/" class="button">Reservations</a>
+  <section>
+    <div class="border-bottom"></div>
+    <h1>Tickets</h1>
+
+    <div id="form">
+      <form @submit.prevent="submit">
+        <div class="select-wrapper">
+          <select class="select" v-model="selectedItem">
+            <option v-if="loading" selected disabled :value="false">Loading Dates</option>
+            <option v-else selected disabled :value="false">Select Date</option>
+            <option v-for="item in items" :value="item">{{item.name}}</option>
+          </select>
+          <select class="select" v-model="quantity">
+            <option v-if="selectedItem" selected disabled :value="false">Select Quantity</option>
+            <option v-else selected disabled :value="false">Quantity</option>
+            <option v-for="(quantity, idx) in quantityAvailable" :value="idx">{{idx}} Seats</option>
+          </select>
+        </div>
+        
+        <div class="select-wrapper">
+          <p>Subtotal: ${{ price }}</p>
+            <button class="button" :disabled="!quantity || !selectedItem">Checkout</button>
+        </div>
+      </form>
+    </div>
+    <div class="border-bottom"></div>
   </section>
+
 
   <footer>
     <div class="border-bottom"></div>
@@ -67,9 +95,13 @@
       <a href="">Email newsletter</a>
     </div>
     <div>©2019</div>
-    
+
   </footer>
 
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="/assets/js/square.js"></script>
 </body>
 
 </html>
