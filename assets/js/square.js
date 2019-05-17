@@ -50,7 +50,7 @@ var isDev = function () {
             })
           },
           checkout: function () {
-            const item = Object.assign({}, this.selectedItem, {quantity: this.quantity.toString()})
+            const item = this.buildItem()
             const order = {
               items: [item],
               redirect_url: this.redirectUrl,
@@ -61,6 +61,17 @@ var isDev = function () {
               mode: 'cors',
               body: JSON.stringify(order)
             })
+          },
+          buildItem: function () {
+            const item = Object.assign({}, this.selectedItem, {quantity: this.quantity.toString()})
+            const { name, category_id } = this.mainItem
+            const item = {
+              name,
+              variation_name: this.selectedItem.name,
+              catalog_object_id: this.selectedItem.id,
+              quantity: this.quantity.toString()
+            }
+            return item
           },
           getItems: function () {
             this.fetch(this.apiUrl + 'items')
@@ -80,7 +91,8 @@ var isDev = function () {
             return fetch(url, fetchOptions).then(function(response) { return response.json() })
           },
           populateItems: function (data) {
-            this.items = data.body[0].variations
+            this.mainItem = data.body[0]
+            this.variations = mainItem.variations
             this.loading = false
           },
           populateStock: function (data) {
