@@ -71,13 +71,14 @@
             <option v-for="item in items" :value="item">{{item.name}}</option>
           </select>
           <select class="select" v-model="quantity">
-            <option selected disabled :value="false">Select Quantity</option>
+            <option v-if="selectedItem" selected disabled :value="false">Select Quantity</option>
+            <option v-else selected disabled :value="false">Quantity</option>
             <option v-for="(quantity, idx) in quantityAvailable" :value="idx">{{idx}} Seats</option>
           </select>
         </div>
         
         <div class="select-wrapper">
-          <p>Subtotal: $0</p>
+          <p>Subtotal: ${{ price }}</p>
             <button class="button" :disabled="!quantity || !selectedItem">Checkout</button>
         </div>
       </form>

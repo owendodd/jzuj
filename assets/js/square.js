@@ -22,14 +22,22 @@ var isDev = function () {
         computed: {
           quantityAvailable: function() {
             const quantityArray = []
-            quantityArray[0] = 0
             if (!this.selectedItem) return quantityArray
+            quantityArray[0] = 0
             const self = this
             const itemVariation = this.stock.find(function(item) {
               return item.variation_id === self.selectedItem.id
             })
             quantityArray[+itemVariation.quantity_on_hand] = +itemVariation.quantity_on_hand
             return quantityArray
+          },
+          price: function() {
+            const price = this.selectedItem && this.selectedItem.price_money.amount * this.quantity
+            if (price) {
+              return `${price/100}`
+            } else {
+              return '0'
+            }
           }
         },
         methods: {
