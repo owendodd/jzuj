@@ -66,11 +66,10 @@ var isDev = function () {
             })
           },
           buildItem: function () {
-            const { name, id } = this.mainItem
+            const { item_id, id } = this.selectedItem
             const item = {
-              name,
-              id,
-              variation_name: this.selectedItem.name,
+              id: item_id,
+              catalog_object_id: id,
               quantity: this.quantity.toString(),
             }
             return item
