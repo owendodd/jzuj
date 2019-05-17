@@ -55,7 +55,7 @@ var isDev = function () {
               redirect_url: this.redirectUrl,
               request_id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
             }
-            return this.fetch(this.apiUrl + 'checkout', {
+            this.fetch(this.apiUrl + 'checkout', {
               method: 'POST',
               mode: 'cors',
               body: JSON.stringify(order)
