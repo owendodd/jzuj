@@ -63,7 +63,6 @@ var isDev = function () {
             })
           },
           buildItem: function () {
-            const item = Object.assign({}, this.selectedItem, {quantity: this.quantity.toString()})
             const { name, category_id } = this.mainItem
             const item = {
               name,
