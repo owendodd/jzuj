@@ -76,7 +76,7 @@ var isDev = function () {
               },
               options
             )
-            return fetch(url, fetchOptions)
+            return fetch(url, fetchOptions).then(function(response) { return response.json() })
           },
           populateItems: function (data) {
             this.items = data.body[0].variations
