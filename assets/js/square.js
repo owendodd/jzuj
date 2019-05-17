@@ -23,12 +23,13 @@ var isDev = function () {
           quantityAvailable: function() {
             const quantityArray = []
             if (!this.selectedItem) return quantityArray
-            quantityArray[0] = 0
+            quantityArray[0] = 1
             const self = this
             const itemVariation = this.stock.find(function(item) {
               return item.variation_id === self.selectedItem.id
             })
-            quantityArray[+itemVariation.quantity_on_hand] = +itemVariation.quantity_on_hand
+            const limit = +itemVariation.quantity_on_hand - 1
+            quantityArray[limit] = +itemVariation.quantity_on_hand
             return quantityArray
           },
           price: function() {
