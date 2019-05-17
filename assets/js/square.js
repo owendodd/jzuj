@@ -55,21 +55,31 @@ var isDev = function () {
               redirect_url: this.redirectUrl,
               request_id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
             }
-            return fetch(this.apiUrl + 'checkout', {
+            return this.fetch(this.apiUrl + 'checkout', {
               method: 'POST',
               mode: 'cors',
               body: JSON.stringify(order)
             }).then(function(response) { return response.json() })
           },
           getItems: function () {
-            fetch(this.apiUrl + 'items')
+            this.fetch(this.apiUrl + 'items')
               .then(function(response) { return response.json()})
               .then(this.populateItems, this.handleFail)
           },
           getStock: function () {
-            fetch(this.apiUrl + 'inventory')
+            this.fetch(this.apiUrl + 'inventory')
               .then(function(response) { return response.json()})
               .then(this.populateStock, this.handleFail)
+          },
+          fetch: function (url, options) {
+            const fetchOptions = Object.assign(
+              {
+                url: url,
+                mode: 'cors'
+              },
+              options
+            )
+            return fetch(fetchOptions)
           },
           populateItems: function (data) {
             this.items = data.body[0].variations
