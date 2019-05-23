@@ -2,53 +2,87 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138660986-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag('js', new Date())
+    gtag('config', 'UA-138660986-1')
+  </script>
   <meta name="google-site-verification" content="wBcYTz4YU7kI-qA1YeniJiDBqjx6CQdUc6L8ZgNS2M8" />
   <meta name="google-site-verification" content="p3IArHJhdD7N2uzYWLV7M27BRYkyY5XfvQxzfkj7Ong" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="/assets/css/styles.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/styles.min.css" />
   <link rel="icon" type="image/png" href="/assets/imgs/favicon.png" />
 
-  <title>Jzuj</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <script src="/assets/js/script.js"></script>
+
+  <title>Jzuj Food</title>
 </head>
+
+<!-- Header -->
 
 <body>
   <header>
+    <div class="bg"></div>
+    <div class="title">
+      <a id="menu">
+        <img src="/assets/imgs/menu.svg" alt="" />
+      </a>
+      <a href="/" class="logo">Jzuj Food</a>
+    </div>
+
     <nav>
-      <a href="/" class="logo">Jzuj</a>
-      <a href="/pages/dinners">Dinners</a>
-      <!-- <a href="/pages/cookbook">Cookbook</a> -->
-      <a href="/pages/products">Products</a>
-      <a href="/pages/info">Info</a>
+      <a href="/pages/upcoming/summer19/" id="upcoming-events">Upcoming events</a>
+      <a href="/pages/past/" id="past-events">Past events</a>
+      <!-- <div id="past-expanded">
+        <p>Jan 29–Feb 9, 2019<br />
+        51 Elizabeth at 51 Elizabeth</p>
+      <p>Sep 26, 2018<br />
+        The Aquarium at Lee’s on Canal</p>
+      <p>Sep 21–22, 2018<br />
+        Temporary Wine Bar at Café Forgot</p>
+      <p>Sep 8, 2018<br />
+        Driveway Dinner, at Alex’s</p>
+      <p>Aug 4, 2018<br />
+        Fruit of Paradise at 814</p>
+      <p>Jan 29–Feb 9, 2019<br />
+        51 Elizabeth at 51 Elizabeth</p>
+      <p>Jun 7, 2018<br />
+        Test Dinner No.1 at Lee's on Canal</p>
+      </div> -->
+      <a href="/pages/info/" id="information">Information</a>
+      <a href="/pages/newsletter/" id="newsletter">Newsletter</a>
     </nav>
   </header>
 
+  <div class="content">
   <section>
-    <div class="content-block">
-      <div class="block-container">
-        <img src="/assets/imgs/home_a.jpg" alt="Jzuj">
-      </div>
-      <div class="block-container">
-        <img src="/assets/imgs/home_b.jpg" alt="Jzuj">
-      </div>
-    </div>
+    <a href="/pages/upcoming/summer19/" class="no-hover">
+    <img class="summer19" src="/assets/imgs/summer19.svg" alt="Summer 19" />
+  </a>
+  <p class="center">Next dinner: June 3rd, 7:30pm.</p>
+    <a href="/pages/upcoming/summer19/" class="button">Reservations</a>
   </section>
 
   <footer>
-    <p>
-      <a href="https://tinyletter.com/Jzuj">Subscribe to the mailing list</a>
-      <br>for occasional updates and
-      <br>event invitations</p>
-    <br>
-    <p>
-      <a href="https://www.instagram.com/jzuj.food">@jzuj.food</a>
-      <br>
-      <a href="mailto:info@jzujfood.com">info@jzujfood.com</a>
-    </p>
+    <div class="border-bottom"></div>
+    <div class="links">
+      <a href="">Instagram</a>
+      <a href="">Contact</a>
+      <a href="">Email newsletter</a>
+    </div>
+    <div>©2019</div>
+    
   </footer>
-
-
+</div>
 
 </body>
 
