@@ -60,10 +60,11 @@ header {
   text-align: center;
   text-transform: uppercase;
   font-size: 50px;
-  // border: 3px solid black;
   border-radius: 15px;
-  padding: 20px 30px;
+  padding: 20px 30px 30px;
   position: fixed;
+  max-height: 100vh;
+  overflow-y: scroll;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -72,10 +73,8 @@ header {
 
   .bg {
     position: absolute;
-    background: rgba(255, 255, 255, 0.9);
-    filter: blur(10px);
-    top: -50px;
-    border-radius: 15px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) calc(100% - 30px), rgba(255, 255, 255, 0) 100%);
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -96,23 +95,37 @@ header {
     cursor: pointer;
   }
 
+  nav {
+    width: 100%;
+    text-transform: none;
+    text-align: left;
+    display: none;
+  
+    a {
+      padding: 0;
+      display: block;
+      margin: 10px 0;
+      transition: all 0.4s;
+  
+    }
+
+    #past-expanded {
+      // display: none;
+      p {
+        margin: 0 0 20px 30px;
+        @extend %body;
+      }
+    }
+  }
+
 }
 
 
-nav {
-  width: 100%;
-  text-transform: none;
-  text-align: left;
-  display: none;
 
-  a {
-    padding: 0;
-    display: block;
-    margin: 10px 0;
-    transition: all 0.4s;
 
-  }
-
+.content {
+  position: relative;
+  min-height: calc(100vh + 100px);
 }
 
 section {
@@ -129,6 +142,10 @@ section {
       text-align: center;
     }
   }
+  &:last-of-type {
+    margin-bottom: 0;
+    padding: 0 0 300px;
+  }
 
   h1 {
     text-align: center;
@@ -138,18 +155,17 @@ section {
     max-width: 800px;
   }
 
-
   .summer19 {
-    margin-top: 40px;
+    margin: 40px;
+  }
+  .small {
+    margin: 0;
+    width: 60%;
   }
   &.banner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 30px;
     width: calc(100vw - 60px);
-    margin: 0 auto;
-
+    margin: 100px auto 0;
+    padding: 0 0 
     p {
       text-align: center;
       margin-bottom: 20px;
@@ -202,9 +218,10 @@ section {
 
 footer {
   display: flex;
+  position: absolute;
+  bottom: 0;
   justify-content: space-between;
   width: 100%;
-  padding: 180px 0 0;
   flex-wrap: wrap;
 
   .links a {
