@@ -27,6 +27,7 @@ body {
     &:hover {
       opacity: 0.3;
     }
+
     &.no-hover {
       &:hover {
         opacity: 1;
@@ -40,17 +41,18 @@ body {
   padding: 10px 20px;
   color: white;
   border-radius: 10px;
-  border: 3px solid black;
+  border: 4px solid black;
   font-family: 'Spot Mono', 'Courier New', Courier, monospace;
   font-size: 30px;
   cursor: pointer;
   transition: all 0.4s;
   width: 100%;
-  max-width: 600px;
+  // max-width: 600px;
 
   &:hover {
     opacity: 0.3;
   }
+
   &:focus {
     outline: none;
   }
@@ -88,9 +90,22 @@ header {
   a#menu {
     margin: 0;
     position: absolute;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 40px;
+    height: 30px;
+    margin: 15px 0;
     left: 30px;
     top: 22px;
     cursor: pointer;
+
+    .menu-line {
+      height: 4px;
+      background-color: black;
+      border-radius: 2px;
+      width: 100%;
+    }
   }
 
   nav {
@@ -98,16 +113,17 @@ header {
     text-transform: none;
     text-align: left;
     display: none;
-  
+
     a {
       padding: 0;
       display: block;
       margin: 10px 0;
       transition: all 0.4s;
-  
+
     }
 
     #past-expanded {
+
       // display: none;
       p {
         margin: 0 0 20px 30px;
@@ -128,7 +144,7 @@ header {
 
 section {
   text-align: center;
-  margin: 100px auto 150px;
+  margin: 110px auto 150px;
   max-width: 800px;
 
   p {
@@ -140,6 +156,7 @@ section {
       text-align: center;
     }
   }
+
   &:last-of-type {
     margin-bottom: 0;
     padding: 0 0 300px;
@@ -150,21 +167,24 @@ section {
     font-weight: normal;
     text-transform: uppercase;
     font-size: 50px;
+    margin: 30px 0;
     max-width: 800px;
   }
 
   .summer19 {
     margin: 40px;
   }
+
   .small {
     margin: 0;
     width: 60%;
   }
+
   &.banner {
     width: calc(100vw - 60px);
     margin: 100px auto 0;
-    padding: 0 0 
-    p {
+
+    padding: 0 0 p {
       text-align: center;
       margin-bottom: 20px;
 
@@ -175,38 +195,99 @@ section {
 
 #form {
   margin-bottom: 60px;
+
   .select-wrapper {
     display: grid;
     grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
     grid-gap: 20px;
     margin-bottom: 30px;
   }
+
   .select {
     @extend %body;
-    appearance: none;
+    @include vendor(appearance, none);
     margin: 20px auto;
     padding: 10px 20px;
     display: block;
-    border: 3px solid black;
+    border: 4px solid black;
     border-radius: 10px;
     height: auto;
     width: 100%;
     cursor: pointer;
     background-size: 20px;
     transition: all 0.4s;
+
     &:focus {
       outline: none;
     }
+
     &:hover {
       opacity: 0.3;
     }
   }
+
   p {
     text-align: left;
     margin: 0;
     vertical-align: center;
     padding: 13px 0;
   }
+}
+
+
+#mc_embed_signup {
+  .input {
+    @include vendor(appearance, none);
+    @include vendor(box-sizing, border-box);
+    @extend %body;
+    appearance: none;
+    margin: 20px 0;
+    padding: 10px 20px;
+    display: block;
+    border: 4px solid black;
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    max-width: 800px;
+    cursor: pointer;
+    background-size: 20px;
+    transition: all 0.4s;
+
+    &::-webkit-input-placeholder {
+      color: rgba(0, 0, 0, 0.3);
+    }
+
+    &::-moz-placeholder {
+      color: pink;
+    }
+
+    &:-ms-input-placeholder {
+      color: pink;
+    }
+
+    &:-moz-placeholder {
+      color: pink;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      opacity: 0.3;
+    }
+  }
+
+  .button {
+    // width: auto;
+    float: right;
+
+  }
+
+  .response {
+    margin: 20px 0;
+  }
+
 }
 
 
@@ -227,10 +308,82 @@ footer {
   }
 }
 
-.border-bottom {
-  margin-bottom: 20px;
+.divider {
+  margin-bottom: 30px;
   flex-basis: 100%;
-  height: 3px;
+  height: 4px;
   background-color: black;
-  border-radius: 1.5px;
+  border-radius: 2px;
+}
+
+
+@media screen and (max-width: 540px) {
+
+  %body {
+    font-size: 24px;
+  }
+
+  section {
+    margin-top: 90px;
+    h1 {
+      font-size: 35px;
+    }
+  }
+
+  header {
+    font-size: 35px;
+
+    a#menu {
+      width: 30px;
+      height: 21px;
+      margin: 9px 0;
+
+      .menu-line {
+        height: 3px;
+        border-radius: 1.5px;
+      }
+    }
+  }
+
+  .divider {
+    height: 3px;
+    border-radius: 1.5px;
+  }
+
+  .button {
+    font-size: 24px;
+    border: 3px solid black;
+  }
+
+  section .summer19 {
+    margin: 0 0 40px;
+    &.small {
+      margin-top:0px;
+      width: 100%;
+    }
+  }
+
+  footer .links a {
+    display: block;
+    margin: 0 0 10px;
+  }
+
+
+  #form {
+    .select-wrapper {
+      display: block;
+      p {
+        margin: 20px 0;
+      }
+    }
+    .select {
+      border: 3px solid black;
+    }
+  }
+
+  #mc_embed_signup .input {
+    border: 3px solid black;
+  }
+
+
 }
