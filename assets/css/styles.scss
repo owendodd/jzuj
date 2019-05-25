@@ -151,6 +151,8 @@ section {
     text-align: left;
     max-width: 800px;
     margin: 0 auto 30px;
+    font-size: 28px;
+    line-height: 1.5em;
 
     &.center {
       text-align: center;
@@ -327,6 +329,9 @@ footer {
     margin-top: 90px;
     h1 {
       font-size: 35px;
+    }
+    p {
+      font-size: 20px;
     }
   }
 
