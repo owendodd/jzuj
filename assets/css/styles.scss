@@ -139,7 +139,7 @@ header {
 
 .content {
   position: relative;
-  min-height: calc(100vh + 100px);
+  min-height: calc(100vh + 140px);
 }
 
 section {
@@ -174,7 +174,9 @@ section {
   }
 
   .summer19 {
-    margin: 40px;
+    margin: 40px 0;
+    max-width: 800px;
+
   }
 
   .small {
@@ -322,7 +324,7 @@ footer {
 @media screen and (max-width: 540px) {
 
   %body {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   section {
@@ -356,12 +358,17 @@ footer {
   }
 
   .button {
-    font-size: 24px;
+    font-size: 20px;
     border: 3px solid black;
   }
 
-  section .summer19 {
+  section.summer19 {
     margin: 0 0 40px;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
     &.small {
       margin-top:0px;
       width: 100%;
