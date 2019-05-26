@@ -8,7 +8,7 @@ var isDev = function () {
         el: "#form",
         data: {
           apiUrl: isDev() ? 'http://localhost:3000/' : 'https://mff5xh1kl3.execute-api.us-east-1.amazonaws.com/dev/',
-          redirectUrl: isDev() ? 'http://localhost:5500/' : 'https://jzujfood.com',
+          redirectUrl: isDev() ? 'http://localhost:5500/pages/confirmation' : 'https://jzujfood.com/pages/confirmation/',
           loading: true,
           mainItem: null,
           variations: [],
