@@ -43,7 +43,7 @@ body {
   border-radius: 10px;
   border: 4px solid black;
   font-family: 'Spot Mono', 'Courier New', Courier, monospace;
-  font-size: 30px;
+  font-size: 28px;
   cursor: pointer;
   transition: all 0.4s;
   width: 100%;
@@ -209,6 +209,7 @@ section {
 
   .select {
     @extend %body;
+    font-size: 28px;
     @include vendor(appearance, none);
     margin: 20px auto;
     padding: 10px 20px;
@@ -244,6 +245,7 @@ section {
     @include vendor(appearance, none);
     @include vendor(box-sizing, border-box);
     @extend %body;
+    font-size: 28px;
     appearance: none;
     margin: 20px 0;
     padding: 10px 20px;
