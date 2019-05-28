@@ -8,7 +8,7 @@ var form = new Vue({
   el: "#form",
   data: {
     apiUrl: isDev() ? 'http://localhost:3000/' : 'https://mff5xh1kl3.execute-api.us-east-1.amazonaws.com/dev/',
-    redirectUrl: 'jzujfood.com/pages/confirmation/',
+    redirectUrl: 'https://jzujfood.com/pages/confirmation/',
     loading: true,
     mainItem: null,
     variations: [],
