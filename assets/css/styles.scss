@@ -173,6 +173,15 @@ section {
     max-width: 800px;
   }
 
+  &.summer19 {
+    margin: 0 auto 40px;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 50px);
+  }
+
   .summer19 {
     margin: 40px 0;
     max-width: 800px;
@@ -364,18 +373,6 @@ footer {
     border: 3px solid black;
   }
 
-  section.summer19 {
-    margin: 0 0 40px;
-    padding: 0 !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    &.small {
-      margin-top:0px;
-      width: 100%;
-    }
-  }
 
   footer .links a {
     display: block;
