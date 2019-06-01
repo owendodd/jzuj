@@ -42,6 +42,9 @@ var form = new Vue({
       } else {
         return '0'
       }
+    },
+    soldOut: function () {
+      return !this.quantityAvailable.length
     }
   },
   methods: {
@@ -50,20 +53,29 @@ var form = new Vue({
       this.checkout().then(function(data) {
         const redirect = data.body.checkout.checkout_page_url
         location.href = redirect
-      })
+      }, function(error) {
+        alert(error)
+       })
     },
     checkout: function () {
       const item = this.buildItem()
-      const order = {
-        items: [item],
-        redirect_url: this.redirectUrl,
-        request_id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-      }
-      return this.fetch(this.apiUrl + 'checkout', {
-        method: 'POST',
-        mode: 'cors',
-        body: JSON.stringify(order)
-      })
+      const self = this
+      return new Promise(function (resolve, reject) {
+        self.validate(item).then(() => {
+          const order = {
+            items: [item],
+            redirect_url: self.redirectUrl,
+            request_id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+          }
+          resolve(self.fetch(self.apiUrl + 'checkout', {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(order)
+          }))
+        }, function(error) {
+          reject(error)
+        })
+      }) 
     },
     buildItem: function () {
       const { item_id, id } = this.selectedItem
@@ -74,12 +86,25 @@ var form = new Vue({
       }
       return item
     },
+    validate: function () {
+      const self = this
+      return this.getStock().then(function () {
+        return new Promise((resolve, reject) => {
+          if (self.quantityAvailable.length < self.quantity) {
+            reject('The amount of tickets available has changed, please retry.')
+          } else {
+            resolve(true)
+          }
+        })
+
+      })
+    },
     getItems: function () {
-      this.fetch(this.apiUrl + 'items')
+      return this.fetch(this.apiUrl + 'items')
         .then(this.populateItems, this.handleFail)
     },
     getStock: function () {
-      this.fetch(this.apiUrl + 'inventory')
+      return this.fetch(this.apiUrl + 'inventory')
         .then(this.populateStock, this.handleFail)
     },
     fetch: function (url, options) {

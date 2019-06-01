@@ -73,10 +73,11 @@
               <option v-else selected disabled :value="false">Select Date</option>
               <option v-for="item in variations" :value="item">{{item.name}}</option>
             </select>
-            <select style="background: url('/assets/imgs/arrow.svg') 100% / 20%  20px no-repeat white;" class="select"
+            <select :disabled="soldOut" style="background: url('/assets/imgs/arrow.svg') 100% / 20%  20px no-repeat white;" class="select"
               v-model="quantity">
-              <option v-if="selectedItem" selected disabled :value="false">Select Quantity</option>
-              <option v-else selected disabled :value="false">Quantity</option>
+              <option v-if="!selectedItem" selected disabled :value="false">Quantity</option>
+              <option v-if="soldOut" selected disabled :value="false">Sold Out</option>
+              <option v-else selected disabled :value="false">Select Quantity</option>
               <option v-for="(quantity, idx) in quantityAvailable" :value="idx + 1">{{idx + 1}} Seats</option>
             </select>
           </div>
