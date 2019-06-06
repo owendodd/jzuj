@@ -176,6 +176,10 @@ section {
   .summer19 {
     margin: 40px 0;
     max-width: 800px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
   }
 
